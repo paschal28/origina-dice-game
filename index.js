@@ -1,39 +1,29 @@
-// Generate a random number between 1 and 6
-var randomNumber1 = Math.floor(Math.random() * 6) + 1;
 
-// Select the left <img> element by its id
-var leftDiceImage = document.getElementById("left-dice");
+var randomNumber1 = Math.floor(Math.random() * 6) + 1; //1-6
 
-// Update the src attribute to point to the random dice image
-leftDiceImage.src = "images/dice" + randomNumber1 + ".png";
+var randomDiceImage = "dice" + randomNumber1 + ".png"; //dice1.png - dice6.png
 
-// Log the value to the console for testing
-console.log("Random Number:", randomNumber1);
-console.log("Left Dice Image Source:", leftDiceImage.src);
+var randomImageSource = "images/" + randomDiceImage; //images/dice1.png - images/dice6.png
 
+var image1 = document.querySelectorAll("img")[0];
+
+image1.setAttribute("src", randomImageSource);
 
 
 var randomNumber2 = Math.floor(Math.random() * 6) + 1;
 
-var rightDiceImage = document.getElementById("right-dice");
+var randomImageSource2 = "images/dice" + randomNumber2 + ".png";
 
-// Update the src attribute to point to the random dice image
-rightDiceImage.src = "images/dice" + randomNumber2 + ".png";
-
-// Log the value to the console for testing
-console.log("Random Number:", randomNumber1);
-console.log("rightDice Image Source:", rightDiceImage.src);
+document.querySelectorAll("img")[1].setAttribute("src", randomImageSource2);
 
 
-
-
-var resultHeading = document.getElementById("result");
-
-// Determine the winner and update the text content of the <h1> element
+//If player 1 wins
 if (randomNumber1 > randomNumber2) {
-    resultHeading.textContent = "Player 1 Wins!";
-} else if (randomNumber1 < randomNumber2) {
-    resultHeading.textContent = "Player 2 Wins!";
-} else {
-    resultHeading.textContent = "It's a Draw!";
+  document.querySelector("h1").innerHTML = "🚩 Play 1 Wins!";
+}
+else if (randomNumber2 > randomNumber1) {
+  document.querySelector("h1").innerHTML = "Player 2 Wins! 🚩";
+}
+else {
+  document.querySelector("h1").innerHTML = "Draw!";
 }
